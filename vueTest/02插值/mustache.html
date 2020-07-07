@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			{{message}}
+			<!-- Mustache语法中，不仅仅可以直接写变量，也可以写简单的表达式 -->
+			<h2>{{a}}</h2>
+			<h2>{{a+b}}</h2>
+			<h2>{{a+''+b}}</h2>
+			<h2>{{c*2}}</h2>
+		</div>
+		<script>
+			//let(变量)/const(常量)
+			//编程范式:声明式编程
+			const app = new Vue({
+				el:'#app',//用于挂载要管理的数据
+				data: {
+					message:'aaa',
+					a:'aaa',
+					b:'bbb',
+					c:1
+				}
+			})
+		</script>
+	</body>
+</html>

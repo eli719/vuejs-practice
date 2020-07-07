@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	</head>
+	<body>
+		<div id="main" align="center" >
+			<div v-for="(key,value) in object">
+				<a v-bind:href="key">{{value}}</a>
+			</div>
+
+		</div>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: '#main',
+				data: {
+					object: {
+						'type1': 'http://www.baidu.com',
+						'type2': 'js/vue.js'
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
