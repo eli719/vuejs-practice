@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<h2 v-if="message>1">{{message+1}}</h2>
+			<h2 v-else-if="message>2">{{message+2}}</h2>
+			<h2 v-else>{{message-3}}</h2>
+			
+		</div>
+		<script>
+			const app = new Vue({
+				el:'#app',//用于挂载要管理的数据
+				data: {
+					message:1,
+				}
+			})
+			
+		</script>
+	</body>
+</html>

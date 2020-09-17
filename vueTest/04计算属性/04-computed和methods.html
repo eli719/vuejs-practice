@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<h2>{{a}} {{b}}</h2>
+			<!-- methods -->
+			<h2>{{d()}}</h2>
+			<h2>{{d()}}</h2>
+			<h2>{{d()}}</h2>
+			<h2>{{d()}}</h2>
+			<!-- computed 有缓存-->
+			<h2>{{c}}</h2>
+			<h2>{{c}}</h2>
+			<h2>{{c}}</h2>
+			<h2>{{c}}</h2>
+		</div>
+		<script>
+			const app = new Vue({
+				el: '#app', //用于挂载要管理的数据
+				data: {
+					a: 'aaa',
+					b: 'bbb'
+				},
+				methods:{
+					d:function(){
+						console.log('d')
+						return this.a+" "+this.b;
+					}
+				},
+				computed: {
+					// c:function(){
+					// 	return this.a+" "+this.b;
+					// }
+					//计算属性一般没有set方法，只读属性
+					c: {
+						set: function(newValue) {
+							const names = newValue.split(' ');
+							this.a=names[0];
+							this.b=names[1];
+						},
+						get: function() {
+							console.log('c')
+							return this.a + " " + this.b;
+						}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

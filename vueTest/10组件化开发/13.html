@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<!-- 父组件 -->
+		<div id="app">
+			<cpn></cpn>
+			<cpn></cpn>
+			<cpn ref="aaa"></cpn>
+			<button @click="btnClick">按钮</button>
+		</div>
+		
+		<template id="cpn" 	>
+			<div>
+				<h2>子组件</h2>
+			</div>
+		</template>
+		<script>
+			const app = new Vue({
+				el: '#app',
+				data: {
+					
+				},
+				methods:{
+					btnClick(){
+						//1.$children
+						// console.log(this.$children)
+						// this.$children[0].showMessage()
+						// for (let c of this.$children) {
+						// 	c.showMessage()
+						// }
+						//2.$refs
+						this.$refs.aaa.showMessage()
+					}
+				},
+				components:{
+					cpn:{
+						template: '#cpn',
+						data(){
+							return{
+								name:"aaa"
+							}
+						},
+						methods:{
+							showMessage(){
+								console.log("show")
+							}
+						}
+						
+						
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

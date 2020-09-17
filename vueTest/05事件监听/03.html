@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 1..stop->event.stopPropagation() 停止冒泡-->
+			<div @click="divClick">
+				aaa
+				<button @click.stop="btnClick">按钮</button>
+			</div>
+			<!-- 2..prevent->event.preventDefault() 阻止默认行为-->
+			<form action="" method="post">
+				
+				<input type="submit" value="提交" @click.prevent="submitClick"/>
+			</form>
+			<!-- 3.监听某个键盘按键的点击 -->
+			<input type="text" @keyup="keyUp" />
+		</div>
+		<script>
+			const app = new Vue({
+				el: '#app', //用于挂载要管理的数据
+				data: {
+					counter: 0
+				},
+				methods: {
+					btnClick(){
+						console.log('btnClick')
+					},
+					divClick(){
+						console.log('divClick')
+					},
+					submitClick(){
+						console.log('submitClick')
+					},
+					keyUp(){
+						console.log('keyUp')
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

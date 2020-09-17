@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<h2>{{counter}}</h2>
+			<button @click="increment">+</button>
+			<!-- <button @click="decrement">-</button> -->
+			<!-- 在事件定义时，写方法时省略了小括号，但是方法本身是需要一个参数的，这个时候，Vue默认将浏览器产生的event事件对象作为参数传入到方法 -->
+			<!-- <button @click="decrement()">111</button> -->
+			<button @click="decrement">asd</button>
+			
+			<!-- 方法定义时，我们需要event对象，同时又需要其他对象 -->
+			<!-- 在调用时，如何手动的获取浏览器参数的event对象：$event -->
+				<button @click="btn3(123,$event)">按钮3</button>
+		</div>
+		<script>
+			const app = new Vue({
+				el:'#app',//用于挂载要管理的数据
+				data: {
+					counter:0
+				},
+				methods:{
+					increment(){
+						this.counter++
+					},
+					decrement(){
+						this.counter--
+					},
+					decrement(event){
+						console.log(event)
+					},
+					btn3(c,event){
+						console.log(c+"---"+event)
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

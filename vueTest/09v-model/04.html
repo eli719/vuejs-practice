@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 单选框 -->
+			<!-- <lable for="a" >
+				<input type="checkbox" id="a"  v-model="a" />同意
+			</lable>
+			<h2>{{sex}}</h2>
+			<button :disabled="!a">下一步</button> -->
+			<!-- 多选框 -->
+				<input type="checkbox"  value="1" v-model="hobbies" />1
+				<input type="checkbox" value="2"  v-model="hobbies" />2
+				<input type="checkbox" value="3" v-model="hobbies" />3
+				<input type="checkbox" value="4"  v-model="hobbies" />4
+			<h2>{{hobbies}}</h2>
+
+		</div>
+		<script>
+			const app = new Vue({
+				el: '#app', 
+				data: {
+					message: 'aaa',
+					hobbies:[]
+				},
+			})
+		</script>
+	</body>
+</html>

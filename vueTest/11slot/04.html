@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<cpn></cpn>
+			
+			<cpn >
+				<!-- 获取子组件的数据，以不同形式展示 -->
+				<template slot-scope="slot"   >
+					<!-- <span v-for="item in slot.data">{{item}}-</span> -->
+					<span> {{slot.data.join(" - ")}}</span>
+				</template>
+			</cpn>
+			
+			<cpn >
+				<template slot-scope="slot"   >
+					<!-- <span v-for="item in slot.data">{{item}}-</span> -->
+					<span> {{slot.data.join(" * ")}}</span>
+				</template>
+			</cpn>
+		</div>
+		<template id="cpn">
+			<div>
+				<slot :data="lan">
+					<ul>
+						<li v-for="l in lan">{{l}}</li>
+				</slot>
+			</div>
+		</template>
+		<script>
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: 'aaa',
+				},
+				components:{
+					cpn:{
+						template:'#cpn',
+						data(){
+							return{
+								lan:['a','b','c','d']
+							}
+							
+						}
+						
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

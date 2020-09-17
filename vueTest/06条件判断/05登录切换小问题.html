@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<span v-if="isShow">
+				<label for="username">账号{{isShow}}</label>
+				<input type="text" id="username" key="username" />
+			</span>
+			<span v-else>
+				<label for="email">email</label>
+				<input type="text" id="email"key="email" />
+			</span>
+			<button @click="isShow=!isShow">change</button>
+			<!-- 如果我们在有输入内容的情况下切换了类型，我们会发现文本框依然显示之前的内容 
+				这是Vue在进行DOM渲染时，出于性能考虑，会尽可能复用已经存在的元素，而不是重新创建
+				如果不想复用，可以在input添加key并保证key不同-->
+		</div>
+		<script>
+			const app = new Vue({
+				el:'#app',
+				data: {
+					isShow:true
+				},
+			})
+			
+		</script>
+	</body>
+</html>

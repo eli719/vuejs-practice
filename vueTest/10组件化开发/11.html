@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<!-- 父组件 -->
+		<div id="app">
+			<cpn :cnum1="num1" :cnum2="num2" @num1change="num1change"  @num2change="num2change"></cpn>
+		</div>
+		
+		<template id="cpn" 	>
+			<div>
+				<h2>props:{{cnum1}}</h2>
+				<h2>data:{{dnum1}}</h2>
+				<!-- <input type="text" v-model="dnum1" /> -->
+				<input type="text"  :value="dnum1" @input="num1Input"/>
+				<h2>props:{{cnum2}}</h2>
+				<h2>data:{{dnum2}}</h2>
+				<!-- <input type="text" v-model="dnum2" /> -->
+				<input type="text" :value="dnum2" @input="num2Input" />
+			</div>
+		</template>
+		<script>
+			const app = new Vue({
+				el: '#app',
+				data: {
+					num1:0,
+					num2:1
+				},
+				methods:{
+					num1change(value){
+						this.num1=parseFloat(value)
+					},
+					num2change(value){
+						this.num2=parseFloat(value)
+					}
+				},
+				components:{
+					cpn:{
+						template: '#cpn',
+						props:{
+							cnum1:Number,
+							cnum2:Number
+						},
+						data(){
+							return {
+								dnum1:this.cnum1,
+								dnum2:this.cnum2
+							}
+						},
+						methods:{
+							num1Input(event){
+								//1.将input中的value传递到dnum1
+								this.dnum1= event.target.value
+								//2.为了让父组件可以修改值，发送一个事件
+								this.$emit('num1change',this.dnum1)
+								//3.同时修饰dnum1的值
+								this.dnum2 = this.dnum1*100
+							},
+							num2Input(event){
+								this.dnum2= event.target.value
+								this.$emit('num2change',this.dnum2)	
+								this.dnum1 = this.dnum2/100
+							}
+						}
+					},
+				}
+			})
+		</script>
+	</body>
+</html>

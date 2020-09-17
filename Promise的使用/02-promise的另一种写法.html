@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			new Promise((resolve,reject)=>{
+				setTimeout(()=>{
+					// resolve('1')
+					reject('2')
+				},1000)
+			}).then(data=>{
+				console.log(data);
+			},err=>{
+				console.log(err);
+			})
+		</script>
+	</body>
+</html>

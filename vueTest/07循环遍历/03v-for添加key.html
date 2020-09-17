@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<ul>
+				<li v-for="val in a" :key="val">{{val}}</li>
+			</ul>
+			
+		</div>
+		<script>
+			const app = new Vue({
+				el:'#app',//用于挂载要管理的数据
+				data: {
+					a:['a','b','c','d']
+				}
+			})
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//什么时候使用箭头
+			setTimeout(function(){
+				console.log(this)
+			},100)
+			
+			setTimeout(()=>{
+				console.log(this)
+			},100)
+			
+			//结论：箭头函数中的this引用的是最近作用域中的this
+			const obj = {
+				aaa(){
+					setTimeout(function(){
+						console.log(this)
+					})
+					
+					console.log(this)
+					
+					setTimeout(()=>{
+						console.log(this)
+					})
+				}
+				
+			}
+		</script>
+	</body>
+</html>

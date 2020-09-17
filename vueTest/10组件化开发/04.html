@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<cpn></cpn>
+		</div>
+		<script>
+			//全局组件的语法糖
+			//1.创建组件构造对象
+			// const cpnCons = Vue.extend()
+
+			//2.注册组件(全局组件，意味着可以在多个Vue的实例下使用)
+			// Vue.component('cpn',{
+			// 	template: `
+			// 	<div>
+			// 		<h2>aaaa</h2>
+			// 		<p>qwe</p>
+			// 	</div>`
+			// })
+			
+			//注册局部组件的语法糖
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: 'aaa'
+				},
+				components: {
+					cpn: {
+						template: `
+				<div>
+					<h2>aaaa</h2>
+					<p>qwe</p>
+				</div>`
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

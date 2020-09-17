@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<ul>
+				<li v-for="val in a" :key="val">{{val}}</li>
+			</ul>
+			<button type="button" @click="btnClick">按钮</button>
+		</div>
+		<script>
+			const app = new Vue({
+				el:'#app',
+				data: {
+					a:['a','b','c','d']
+				},
+				methods:{
+					btnClick(){
+						//在数组最后添加
+						// this.a.push('aaa')
+						// this.a.push('aaa','bbb','ccc')
+						//删除最后一个
+						// this.a.pop();
+						//删除第一个
+						// this.a.shift();
+						//在最前面添加一个元素
+						// this.a.unshift('aaa')
+						// this.a.unshift('aaa','b','c')
+						//splice:删除/插入/替换元素
+						//删除元素：第二参数传入要删除的个数
+						//替换元素：第二个参数表示我们要替换几个元素，后面是用于替换的元素
+						//插入元素：第二参数，传入0，并且后面跟上要插入的元素
+						//splice(start)
+						// this.splice(1,3,'m','n','l')
+						
+						// this.a.sort();
+						
+						// this.a.reverse();
+						
+						//注意：通过索引值替换元素不会及时响应
+						// this.a[0]='sad';
+						// this.a.splice(0,1,'asd');
+						//set(要修改的对象，索引值，修改后的值)
+						Vue.set(this.a,0,'asd')
+						
+						
+					}
+				}
+			})
+			
+		</script>
+	</body>
+</html>
